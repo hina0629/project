@@ -61,6 +61,31 @@ dropZones.forEach(zone => {
         // 取得した要素をドロップした場所の子要素として追加(内部的にはHTMLの構造が変わっただけ)
         e.target.appendChild(draggedElement);
 
+        // 要素の移動 (親要素として追加)
+        e.currentTarget.appendChild(draggedElement); 
+
+        // 座標
+        // ドロップ領域(親要素)の位置情報を取得
+        const dropZoneBounds = e.currentTarget.getBoundingClientRect();
+        console.log(dropZoneBounds)
+
+        // マウスカーソルの座標から、ドロップ領域の左上の座標を引いて、相対的な位置を算出
+        // e.clientX/Y: 画面左上からの絶対座標
+        const x = e.clientX - dropZoneBounds.left;
+        const y = e.clientY - dropZoneBounds.top;
+        
+        // 要素自体の半分の幅/高さを引くことで、カーソルが要素の中心に来るように調整
+        // 要素の中心にカーソルが合うようにオフセットを計算
+        const itemWidth = draggedElement.offsetWidth;
+        const itemHeight = draggedElement.offsetHeight;
+        
+        const finalX = x - (itemWidth / 2);
+        const finalY = y - (itemHeight / 2);
+
+        // スタイルを適用
+        draggedElement.style.left = `${finalX}px`;
+        draggedElement.style.top = `${finalY}px`;
+
         // 元の見た目にもどす
         e.target.classList.remove('drag-over');
     })
