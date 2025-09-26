@@ -1,17 +1,30 @@
+/* すべてのドロップ領域に共通の基本スタイル */
 .drop-zone {
-    width: 200px;
-    height: 100px;
-    border: 2px dashed gray;
-    margin: 10px;
-    text-align: center;
+    /* 画面幅いっぱい (または親要素いっぱい) にする */
+    width: 100%; 
+    min-height: 150px; /* ある程度の高さを確保 */
+    border: 3px dashed gray;
+    margin-top: 20px;
+    padding: 10px;
+    
+    /* 🌟 Flexboxを有効にして、中身を横並びにする 🌟 */
+    display: flex;
+    flex-wrap: wrap;       /* 要素が入りきらない場合は折り返す */
+    align-items: flex-start; /* 要素を上端に寄せる */
+    gap: 10px;             /* 要素間の間隔 */
 }
 
+/* ドラッグ要素のスタイル */
 .draggable-item {
     padding: 10px;
     background-color: lightblue;
     cursor: grab;
+    /* 🌟 ドロップ後の並びを良くするため、固定幅を設定しても良い 🌟 */
+    width: 120px; 
+    text-align: center;
 }
 
+/* その他のスタイルはそのまま */
 .dragging {
     opacity: 0.5;
 }
