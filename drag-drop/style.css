@@ -6,7 +6,7 @@
     text-align: center;
 }
 
-#draggable-item {
+.draggable-item {
     padding: 10px;
     background-color: lightblue;
     cursor: grab;
