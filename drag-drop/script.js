@@ -59,10 +59,7 @@ dropZones.forEach(zone => {
         const draggedElement = document.getElementById(data);
 
         // 取得した要素をドロップした場所の子要素として追加(内部的にはHTMLの構造が変わっただけ)
-        e.target.appendChild(draggedElement);
-
-        // 要素の移動 (親要素として追加)
-        e.currentTarget.appendChild(draggedElement); 
+        e.currentTarget.appendChild(draggedElement);
 
         // 座標
         // ドロップ領域(親要素)の位置情報を取得
