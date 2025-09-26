@@ -64,24 +64,22 @@ dropZones.forEach(zone => {
         // 座標
         // ドロップ領域(親要素)の位置情報を取得
         const dropZoneBounds = e.currentTarget.getBoundingClientRect();
-        console.log(dropZoneBounds)
+        // console.log(dropZoneBounds)
 
         // マウスカーソルの座標から、ドロップ領域の左上の座標を引いて、相対的な位置を算出
         // e.clientX/Y: 画面左上からの絶対座標
         const x = e.clientX - dropZoneBounds.left;
-        const y = e.clientY - dropZoneBounds.top;
-        
-        // 要素自体の半分の幅/高さを引くことで、カーソルが要素の中心に来るように調整
-        // 要素の中心にカーソルが合うようにオフセットを計算
-        const itemWidth = draggedElement.offsetWidth;
-        const itemHeight = draggedElement.offsetHeight;
-        
-        const finalX = x - (itemWidth / 2);
-        const finalY = y - (itemHeight / 2);
 
+        // つかんだ要素の横幅を取得
+        const itemWidth = draggedElement.offsetWidth;
+        // 操作感をよくしている
+        const finalX = x - (itemWidth / 2); // カーソルを中央に合わせる
+
+        const fixedY = 50; 
+    
         // スタイルを適用
         draggedElement.style.left = `${finalX}px`;
-        draggedElement.style.top = `${finalY}px`;
+        draggedElement.style.top = `${fixedY}px`;
 
         // 元の見た目にもどす
         e.target.classList.remove('drag-over');
