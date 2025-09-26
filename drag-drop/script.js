@@ -1,8 +1,8 @@
 // 動かしたいコンテンツ
 const draggableItem = document.getElementById('draggable-item');
 
-// ドロップする場所
-const dropZone = document.getElementById('drop-zone');
+// ドロップする場所(両方とも取得)
+const dropZones = document.querySelectorAll('.drop-zone');
 
 // ものをつかんだ瞬間に発生するイベント
 draggableItem.addEventListener('dragstart', function(e) {
@@ -27,35 +27,39 @@ draggableItem.addEventListener('dragend', (e) => {
     e.target.classList.remove('dragging');
 });
 
-// ものが置き場の上に乗っている間に発生するイベント
-dropZone.addEventListener('dragover', function(e) {
-    // ドロップを許可(マウスでつかんでいるときにつかんでいる段階でも🚫マークが表示されるからこの段階から必要)
-    e.preventDefault();
+// 取得したすべてのドロップ領域(zone)に対してイベント設定を１つずつ実行
+dropZones.forEach(zone => {
+    // ものが置き場の上に乗っている間に発生するイベント
+    zone.addEventListener('dragover', function(e) {
+        // ドロップを許可(マウスでつかんでいるときにつかんでいる段階でも🚫マークが表示されるからこの段階から必要)
+        e.preventDefault();
 
-    // マウスでつかんで重ねているときの置き場のcssを追加
-    e.target.classList.add('drag-over');
+        // マウスでつかんで重ねているときの置き場のcssを追加
+        e.target.classList.add('drag-over');
+    })
+
+    // ものが置き場から離れたとき(マウスでつかんでいるときに置き場以外の場所に移動)に発生するイベント
+    zone.addEventListener('dragleave', (e) => {
+        // 元の見た目にもどす
+        e.target.classList.remove('drag-over');
+    });
+
+    // ものが実際にドロップされたとき
+    zone.addEventListener('drop', function(e) {
+        // ここでもドロップを許可(ドロップがテキストやファイルだった場合にブラウザが開こうとするのを阻止)
+        e.preventDefault();
+
+        // さっきのdragstartでsetData()を使って記憶したデータ(動かした要素のID(draggable-item))をgetData()で取り出す
+        const data = e.dataTransfer.getData('text/plain');
+
+        // 取り出したID(draggable-item)を使って移動された要素を取得
+        const draggedElement = document.getElementById(data);
+
+        // 取得した要素をドロップした場所の子要素として追加(内部的にはHTMLの構造が変わっただけ)
+        e.target.appendChild(draggedElement);
+
+        // 元の見た目にもどす
+        e.target.classList.remove('drag-over');
+    })
 })
 
-// ものが置き場から離れたとき(マウスでつかんでいるときに置き場以外の場所に移動)に発生するイベント
-dropZone.addEventListener('dragleave', (e) => {
-    // 元の見た目にもどす
-    e.target.classList.remove('drag-over');
-});
-
-// ものが実際にドロップされたとき
-dropZone.addEventListener('drop', function(e) {
-    // ここでもドロップを許可(ドロップがテキストやファイルだった場合にブラウザが開こうとするのを阻止)
-    e.preventDefault();
-
-    // さっきのdragstartでsetData()を使って記憶したデータ(動かした要素のID(draggable-item))をgetData()で取り出す
-    const data = e.dataTransfer.getData('text/plain');
-
-    // 取り出したID(draggable-item)を使って移動された要素を取得
-    const draggedElement = document.getElementById(data);
-
-    // 取得した要素をドロップした場所の子要素として追加(内部的にはHTMLの構造が変わっただけ)
-    e.target.appendChild(draggedElement);
-
-    // 元の見た目にもどす
-    e.target.classList.remove('drag-over');
-})

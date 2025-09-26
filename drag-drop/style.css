@@ -1,23 +1,21 @@
-#draggable-item {
-    padding: 10px;
-    background-color: lightblue;
-    cursor: grab; /* マウスカーソルを手の形にする */
-}
-
-#drop-zone {
+.drop-zone {
     width: 200px;
     height: 100px;
     border: 2px dashed gray;
-    margin-top: 20px;
+    margin: 10px;
     text-align: center;
 }
 
-/* ドラッグ中の要素のスタイル */
+#draggable-item {
+    padding: 10px;
+    background-color: lightblue;
+    cursor: grab;
+}
+
 .dragging {
     opacity: 0.5;
 }
 
-/* ドロップ領域にホバーしたときのスタイル */
 .drag-over {
     border-color: green;
     background-color: #f0fff0;
