@@ -1,0 +1,29 @@
+/* style.css */
+.materials-area {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+.material-loop {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #e0f7fa;
+    cursor: grab; /* ドラッグできることを示すカーソル */
+    border-radius: 4px;
+}
+.timeline-track {
+    min-height: 100px; /* ドロップエリアの確保 */
+    border: 2px dashed #00bcd4;
+    padding: 10px;
+    background-color: #f4f8ff;
+}
+/* ドロップされた素材のスタイル */
+.placed-material {
+    background-color: #ff9800;
+    color: white;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    /* 実際には時間に応じて横幅や位置を設定する */
+    display: inline-block;
+}

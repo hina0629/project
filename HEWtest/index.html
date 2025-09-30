@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ドラッグ＆ドロップ作曲サイト</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>音楽制作エリア</h1>
+
+    <div class="materials-area">
+        <h2>素材ライブラリ</h2>
+        <div class="material-loop" draggable="true" data-audio-path="drum_loop.mp3">
+            🥁 ドラムループ A
+        </div>
+        <div class="material-loop" draggable="true" data-audio-path="bass_line.mp3">
+            🎸 ベースライン B
+        </div>
+    </div>
+
+    <div id="timeline-track" class="timeline-track">
+        <h2>トラック 1 (ここにドロップ)</h2>
+        </div>
+
+    <button id="play-button">▶️ 再生</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
