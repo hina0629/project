@@ -1,0 +1,175 @@
+@charset "UTF-8";
+
+* {
+    box-sizing: border-box;
+}
+
+/* paddingとborderを幅と高さに含める */
+
+body {
+    font-family: 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', 'ヒラギノ角ゴシック', YuGothic, 'Yu Gothic', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic';
+    line-height: 1.8;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* リセット */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+dl,
+dt,
+dd {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    vertical-align: bottom;
+}
+
+/* body */
+body {
+    background: linear-gradient(-45deg, #5c2952, #2a3d5b);
+    min-height: 100vh;
+}
+
+/* header */
+header {
+    display: flex;
+    margin: 20px;
+    justify-content: space-between;
+}
+
+/* ロゴ */
+.logo-wrapper {
+    display: flex;
+    width: 150px;
+    align-items: center;
+}
+
+/* 検索窓 */
+.search-box {
+    display: flex;
+    align-items: center;
+    width: calc(100% / 2.5);
+    height: auto;
+    border-radius: 100px;
+    padding: 5px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 5px 0;
+}
+
+#search {
+    width: 100%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+#search:focus {
+    outline: none;
+}
+
+.search-box i {
+    color: #ffffff;
+    margin-right: 1em;
+}
+
+::placeholder {
+    color: #ffffff;
+    opacity: 1;
+}
+
+input {
+    caret-color: white;
+}
+
+input[type="text"] {
+    color: white;
+}
+
+/* ヘッダーアイコン */
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    width: 150px;
+    justify-content: space-between;
+    padding-left: 40px;
+}
+
+.icon-wrapper i {
+    color: white;
+}
+
+/* nav */
+.nav-wrapper {
+    margin: 10px 0 0 35px;
+    width: fit-content;
+    padding: 10px 20px 10px 10px;
+    border-radius: 20px;
+}
+
+.nav-wrapper:hover .p-none {
+    display: block;
+}
+
+.nav-wrapper:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: 0.2s;
+}
+
+.icon-box {
+    color: white;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.i-wrapper {
+    width: 50px;
+    aspect-ratio: 1 / 1;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.i-wrapper i {
+    line-height: 50px;
+}
+
+@keyframes poyo {
+	from, to { transform: none; }
+	10% { transform: scale(1.2); }
+	40% { transform: scale(.9); }
+	60% { transform: scale(1.04); }
+	80% { transform: scale(.98); }
+}
+
+.i-wrapper:hover{
+    animation: poyo .6s ease 0s 1 normal running none;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: 0.1s;
+}
+
+.select-icon {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.p-none {
+    display: none;
+    margin-left: 10px;
+}
